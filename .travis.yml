@@ -1,0 +1,23 @@
+language: node_js
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: GgsJPfXlyoSDF0rnExi3sQ6kc3fiZTZm+KOVlWV5ZIYZXebsbhwU+rZ1MrSZcqQ3nTeVLfLRE5e4m/4QuuzyszLHuE4UtnkI68Za2OaXdFwLp0r61v2btCGqSImCtipGv9x9RHs9ssB6CREpgK8RB95cfr6Rhk49Q86VsH9WoBAaPDvn6UM+eMGDBJPd4d7V7an9it/AdSKKz042p582A8r9KDRfd98KVOWzgVvRxqo7vYpx5J5H2oFAC1wI19gt0fKcm6wBa6JwxZxGN+vM3CqSNXx0tQmGVz8jV0qEn8FY9s/5kNcczZkWbpf58JSEgiWn4u1z1YDvfYHzTx8MkwWVFW13Oa2XacoSFAstLPXMyZiVWJdRbMUmP5IEIO1dRxXBUG5E163525NPtBx+raQ/79tqy3dmvj7X9wXMmtlYd/6qxggiU+mrP05Keko/YFNrjE4n3lkkH6kt5Y9yqvZDf/xMDGhsqFUhnlR8UH9TVRuY9N/03MKQmZ46lwMwfni0ph41gnFbDXOIksbNTmREA6CQ6eT9ZMyEpdHjjyJ4lU9A4wY50lXb2Tgtrg35ZYj38wlC+7bOz1tWx4kgsgz7LJoaF/bPIVS4Xgp7YkGqK3ls2WAytfX1DCkfJcWbPhguOEzp42O83uKVCZaQM13v9LMkS/ZYAIJHt+H8f4s=
+  app: zh47
+  on:
+    repo: avrj/slack-clone
+    
+script:
+- npm run coverage-travis
+
+after_success:
+- codecov
+
+env:
+  global:
+  - NODE_ENV=test
+  
+cache:
+  directories:
+    - node_modules
